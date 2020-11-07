@@ -25,6 +25,7 @@ then
   mkcdir $DIR
   cp "$CURRENT_DIR/index.js" "index.js"
   cp "$CURRENT_DIR/package.json" "package.json"
+  cp "$CURRENT_DIR/.eslintrc.json" ".eslintrc.json"
   initialize
 else
   echo "please specify target directory"
