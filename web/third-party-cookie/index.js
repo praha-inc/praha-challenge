@@ -22,8 +22,9 @@ appThird.use((req, res, next) => {
   if (mockDB[accessSite] !== undefined) {
     mockDB[accessSite] += 1;
   } else {
-    mockDB[accessSite] = 0;
+    mockDB[accessSite] = 1;
   }
+  console.log(JSON.stringify(mockDB));
   res.locals.referer = accessSite;
   next();
 }, express.static('public-third', {
