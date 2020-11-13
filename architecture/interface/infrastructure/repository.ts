@@ -1,3 +1,5 @@
+import { Saveable } from "../usecase/interfaces/saveable"
+
 class SaveToDB implements Saveable {
   public save(num: number): void {
     console.log(`saved to DB!!: ${num}`)
@@ -15,10 +17,6 @@ class JustLog implements Saveable {
 }
 
 type RepositoryType = 'db' | 'file' | 'log'
-
-export interface Saveable {
-  save(num: number): void
-}
 
 export const saveableFactory = (repositoryType: RepositoryType): Saveable => {
   if (repositoryType === 'db') {
