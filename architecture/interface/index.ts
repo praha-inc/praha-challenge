@@ -1,20 +1,19 @@
 import express, { Request, Response } from 'express';
-import { add, subtract } from './calculate';
+import { handleRequest } from './handler';
 
 const app = express();
 const port = 8080; // default port to listen
 
 app.use(express.json());
 
-app.get('/add', (req: Request, res: Response) => {
-  const { num1, num2 } = req.query;
-  const result = add(Number(num1), Number(num2));
-  res.send(JSON.stringify(result));
-});
+const castAsNumber = (input: any) => {
+  return Number(input)
+}
 
-app.get('/subtract', (req: Request, res: Response) => {
-  const { num1, num2 } = req.query;
-  const result = subtract(Number(num1), Number(num2));
+app.get('/calc', (req: Request, res: Response) => {
+  const {num1: _num1, num2: _num2, num3: _num3, calc, repo } = req.query;
+  const castedNumbersWithoutUndefined = [_num1,_num2,_num3].map((num) => castAsNumber(num)).filter((num) => num)
+  const result = handleRequest(castedNumbersWithoutUndefined,calc,repo)
   res.send(JSON.stringify(result));
 });
 
