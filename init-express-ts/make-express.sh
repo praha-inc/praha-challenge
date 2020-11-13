@@ -2,7 +2,7 @@
 set -e
 
 initialize() {
-  yarn && yarn build
+  yarn
 }
 
 mkcdir ()
