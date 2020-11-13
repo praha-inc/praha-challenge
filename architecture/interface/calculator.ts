@@ -12,7 +12,6 @@ class Subtract implements Calculatable {
 
 class Multiply implements Calculatable {
   public calculate(numbers: number[]): number {
-    console.log('multi');
     return numbers.reduce((acc, val) => acc * val)
   }
 }
