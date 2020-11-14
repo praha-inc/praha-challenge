@@ -12,16 +12,12 @@ const corsOptions = {
 
 app.use(express.json(), cors(corsOptions), cookieParser());
 
-// define a route handler for the default home page
 app.get('/', (req, res) => {
+  console.log(`cookies! ${JSON.stringify(req.cookies)}`);
   res.cookie('server-cookie', 1, { httpOnly: true });
-  res.send('Hello world!');
-});
-app.post('/', (req, res) => {
-  res.send(`body2: ${JSON.stringify(req.body)}`);
+  res.sendStatus(200);
 });
 
-// start the Express server
 app.listen(port, () => {
   console.log(`server started at http://localhost:${port}`);
 });

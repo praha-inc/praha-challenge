@@ -1,9 +1,16 @@
 /* eslint-disable no-undef */
-document.cookie = 'id-from-cookie=1';
+document.cookie = 'browser-cookie=1';
 
-window.alert(document.cookie);
+console.log(document.cookie);
 
+// memo: サーバにリクエストを飛ばす
 const button = document.getElementById('fetch-from-8080');
 button.addEventListener('click', () => {
   fetch('http://localhost:8080', { credentials: 'include' });
+});
+
+// memo: サーバから送られてきたクッキーの内容を変える
+const buttonModify = document.getElementById('rewrite-server-cookie');
+buttonModify.addEventListener('click', () => {
+  document.cookie = 'server-cookie=modifiedCookie';
 });
