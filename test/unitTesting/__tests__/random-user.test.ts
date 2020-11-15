@@ -2,10 +2,10 @@
 import { fetchName, fetchValidName } from "../random-user";
 
 describe("fetchName", () => {
-  test("何らかの文字列を取得できること", async () => {
-    const name = await fetchName();
-    expect(typeof name).toBe("string");
-  });
+  // test("何らかの文字列を取得できること", async () => {
+  //   const name = await fetchName();
+  //   expect(typeof name).toBe("string");
+  // });
 });
 
 describe("fetchValidName", () => {
