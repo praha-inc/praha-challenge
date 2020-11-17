@@ -23,11 +23,13 @@ then
   echo "current directory: $CURRENT_DIR"
 
   mkcdir $DIR
-  cp "$CURRENT_DIR/index.ts" "index.ts"
+  mkdir src
+  cp "$CURRENT_DIR/src/index.ts" "src/index.ts"
   cp "$CURRENT_DIR/package.json" "package.json"
   cp "$CURRENT_DIR/.eslintrc.json" ".eslintrc.json"
   cp "$CURRENT_DIR/tsconfig.json" "tsconfig.json"
   cp "$CURRENT_DIR/jest.config.js" "jest.config.js"
+  cp "$CURRENT_DIR/ormconfig.js" "ormconfig.js"
   initialize
 else
   echo "please specify target directory"

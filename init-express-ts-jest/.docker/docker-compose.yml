@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  test-db:
+    container_name: test-db
+    image: postgres:12
+    ports:
+      - "5499:5432"
+    volumes:
+      - test-store:/var/lib/postgresql/data
+      - ./local/create_test_schema.sql:/docker-entrypoint-initdb.d/1_create_test_schema.sql
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: test2020
+      POSTGRES_DB: test
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
+      TZ: "Asia/Tokyo"
+    restart: always
+
+volumes:
+  test-store:
+    driver: local
