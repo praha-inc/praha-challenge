@@ -78,12 +78,15 @@ class SuperManager extends EmployeeType {
 }
 
 export class EmployeeRefactored {
+  private _type: EmployeeType;
   public constructor(
-    private _type: EmployeeType,
+    type: number,
     private _monthlySalary: number,
     private _comission: number,
     private _bonus: number
-  ) {}
+  ) {
+    this._type = EmployeeType.newType(type);
+  }
 
   public getTypeCode() {
     return this._type.getTypeCode();
