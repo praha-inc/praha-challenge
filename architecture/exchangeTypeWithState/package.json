@@ -2,7 +2,7 @@
   "scripts": {
     "start": "node dist/src/index.js",
     "build": "tsc",
-    "dev": "nodemon --watch '*.ts' --exec 'ts-node' index.ts",
+    "dev": "nodemon --watch '*.ts' --exec 'ts-node' src/index.ts",
     "test": "jest",
     "lint": "eslint",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
