@@ -12,5 +12,6 @@
   "parserOptions": {
     "sourceType": "module",
     "project": "./tsconfig.json"
-  }
+  },
+  "ignorePatterns": ["**/__test__/**"]
 }
