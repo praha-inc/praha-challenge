@@ -2,80 +2,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-parameter-properties */
 
-export abstract class EmployeeType {
-  public static readonly ENGINEER: number = 0;
-  public static readonly SALESMAN: number = 1;
-  public static readonly MANAGER: number = 2;
-  public static readonly SUPER_MANAGER: number = 3;
-
-  abstract getTypeCode(): number;
-  abstract payAmount(e: EmployeeRefactored): number;
-  abstract retirementPlan(e: EmployeeRefactored): boolean;
-
-  public static newType(typeCode: number): EmployeeType {
-    switch (typeCode) {
-      case EmployeeType.ENGINEER:
-        return new Engineer();
-      case EmployeeType.SALESMAN:
-        return new Salesman();
-      case EmployeeType.MANAGER:
-        return new Manager();
-      case EmployeeType.SUPER_MANAGER:
-        return new SuperManager();
-      default:
-        throw new Error("invalid employee type");
-    }
-  }
-}
-
-class Engineer extends EmployeeType {
-  public payAmount(employee: EmployeeRefactored): number {
-    return employee.getMonthlySalary;
-  }
-  public getTypeCode() {
-    return EmployeeType.ENGINEER;
-  }
-  public retirementPlan() {
-    return false;
-  }
-}
-
-class Salesman extends EmployeeType {
-  public payAmount(employee: EmployeeRefactored): number {
-    return employee.getMonthlySalary + employee.getComission;
-  }
-  public getTypeCode() {
-    return EmployeeType.SALESMAN;
-  }
-  public retirementPlan() {
-    return false;
-  }
-}
-
-class Manager extends EmployeeType {
-  public payAmount(employee: EmployeeRefactored): number {
-    return employee.getMonthlySalary + employee.getBonus;
-  }
-  public getTypeCode() {
-    return EmployeeType.MANAGER;
-  }
-  public retirementPlan() {
-    return true;
-  }
-}
-class SuperManager extends EmployeeType {
-  public payAmount(employee: EmployeeRefactored): number {
-    return (
-      employee.getMonthlySalary + employee.getBonus + employee.getComission
-    );
-  }
-  public getTypeCode() {
-    return EmployeeType.SUPER_MANAGER;
-  }
-  public retirementPlan() {
-    return true;
-  }
-}
+import { EmployeeType } from "./employee-type-refactored";
 
 export class EmployeeRefactored {
   private _type: EmployeeType;
@@ -88,9 +15,6 @@ export class EmployeeRefactored {
     this._type = EmployeeType.newType(type);
   }
 
-  public getTypeCode() {
-    return this._type.getTypeCode();
-  }
   public get getMonthlySalary() {
     return this._monthlySalary;
   }
@@ -105,11 +29,21 @@ export class EmployeeRefactored {
     this._type = EmployeeType.newType(typeCode);
   }
 
-  // memo:給与計算
   public payAmount() {
     return this._type.payAmount(this);
   }
-  public retirementPlan(): boolean {
-    return this._type.retirementPlan(this);
+  public hasRetirementPlan(): boolean {
+    return this._type.hasRetirementPlan();
+  }
+  public isBoardMember(): boolean {
+    return this._type.isBoardMember();
   }
 }
+
+const engineer: EmployeeRefactored = new EmployeeRefactored(
+  EmployeeType.ENGINEER,
+  300,
+  100,
+  50
+);
+engineer.payAmount();
