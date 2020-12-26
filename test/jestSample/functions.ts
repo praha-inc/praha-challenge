@@ -16,7 +16,7 @@ export const asyncSumOfArraySometimesZero = (
 ): Promise<number> => {
   return new Promise((resolve): void => {
     try {
-      throwOccasionally(); // fixme: ここはリファクタリングが必要そう！
+      throwOccasionally(); // fixme: ここをテストするには、少し書き方を変える必要がありそう！ヒント：依存性の注入
       resolve(sumOfArray(numbers));
     } catch (error) {
       resolve(0);
@@ -27,7 +27,7 @@ export const asyncSumOfArraySometimesZero = (
 export const getFirstNameThrowIfLong = async (
   maxNameLength: number
 ): Promise<string> => {
-  const nameApiSerivce = new NameApiService(); // fixme: ここはリファクタリングが必要そう！
+  const nameApiSerivce = new NameApiService(); // fixme: ここをテストするには、少し書き方を変える必要がありそう！ヒント：依存性の注入
   const firstName = await nameApiSerivce.getFirstName();
 
   if (firstName.length > maxNameLength) {
