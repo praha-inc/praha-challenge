@@ -22,6 +22,7 @@ class Board extends React.Component {
         key={i}
         highlightWinSquares={highlight}
         value={this.props.squares[i]}
+        id={i}
         updateStateOnClick={() => this.props.onClick(i)}
       />
     );
