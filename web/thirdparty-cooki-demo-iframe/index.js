@@ -1,8 +1,6 @@
 const cookieParser = require('cookie-parser');
 const express = require('express');
 
-express.Router()
-
 const app = express();
 
 const port = 8080;
@@ -20,16 +18,14 @@ app.use((req, res, next) => {
     mockDB[referer] = 1;
   }
 
-  console.log(JSON.stringify(mockDB));
-
   next();
 }, express.static('public-adsense', {
-  setHeaders: (res, path, stat) => {
-    res.cookie('id', 1, {
-      sameSite: 'none',
-      secure: true,
-    });
-  },
+  // setHeaders: (res, path, stat) => {
+  //   res.cookie('id', 1, {
+  //     sameSite: 'none',
+  //     secure: true,
+  //   });
+  // },
 }));
 
 app.get('/', (req, res) => {
