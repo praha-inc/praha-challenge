@@ -25,6 +25,20 @@ export const asyncSumOfArraySometimesZero = (
   });
 };
 
+export const asyncSumOfArraySometimesZeroMock = (
+  numbers: number[],
+  database: DatabaseMock
+): Promise<number> => {
+  return new Promise((resolve): void => {
+    try {
+      database.save(numbers);
+      resolve(sumOfArray(numbers));
+    } catch (error) {
+      resolve(0);
+    }
+  });
+};
+
 export const getFirstNameThrowIfLong = async (
   maxNameLength: number
 ): Promise<string> => {
