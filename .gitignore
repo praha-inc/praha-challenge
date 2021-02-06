@@ -65,3 +65,6 @@ node_modules/
 .env
 
 dist
+
+# local mysql data for employees table
+data/*
