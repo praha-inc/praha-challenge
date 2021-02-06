@@ -1,5 +1,9 @@
 // todo: ここに単体テストを書いてみましょう！
-import { asyncSumOfArraySometimesZeroMock, sumOfArray } from "../functions";
+import {
+  asyncSumOfArray,
+  asyncSumOfArraySometimesZeroMock,
+  sumOfArray,
+} from "../functions";
 import { DatabaseMock } from "../util";
 import { mocked } from "ts-jest/utils";
 
@@ -39,32 +43,43 @@ describe("functions", () => {
     //   }
     // });
   });
-  describe("false positive", () => {
-    test("test", () => {
-      // expect.hasAssertions();
+
+  describe("asyncSumOfArray", () => {
+    // test("test", () => {
+    //   expect.hasAssertions();
+    //   expect(asyncSumOfArray([])).resolves.toBe(1);
+    // });
+    // test("test2", () => {
+    //   expect(asyncSumOfArray([])).rejects.toThrowError();
+    // });
+    // test("test2", () => {
+    //   expect(asyncSumOfArray([1, 2])).resolves.toBe(3);
+    // });
+    test("偽陽性:false positive", () => {
       setTimeout(() => {
-        expect(1).toBe(2);
+        expect(true).toBeFalsy();
       }, 1000);
     });
   });
+
   describe.only("sometimesZero", () => {
-    test("test", () => {
+    test("test", async () => {
       const dbInstance = new DatabaseMock();
       dbInstance.save = () => {
         throw new Error("aaa!");
       };
-      expect(
+      await expect(
         asyncSumOfArraySometimesZeroMock([1, 2], dbInstance)
       ).resolves.toBe(0);
     });
-    test("test", () => {
+    test("test", async () => {
       const dbInstance = new DatabaseMock();
       dbInstance.save = () => {
         // do nothing
       };
-      expect(
+      await expect(
         asyncSumOfArraySometimesZeroMock([1, 2], dbInstance)
-      ).resolves.toBe(0);
+      ).resolves.toBe(3);
     });
   });
 });
