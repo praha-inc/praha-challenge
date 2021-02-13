@@ -9,15 +9,6 @@ import { DatabaseMock } from "../util";
 import { mocked } from "ts-jest/utils";
 
 // const dbMock = mocked(DatabaseMock, true);
-jest.mock("../util", () => {
-  return {
-    DatabaseMock: jest.fn().mockImplementation(() => {
-      return {
-        save: jest.fn(),
-      };
-    }),
-  };
-});
 
 describe("functions", () => {
   describe("sumOfArray", () => {
