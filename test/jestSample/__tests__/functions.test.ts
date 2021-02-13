@@ -45,23 +45,23 @@ describe("functions", () => {
     // });
   });
 
-  describe("asyncSumOfArray", () => {
-    test("test", () => {
-      expect.hasAssertions();
-      expect(asyncSumOfArray([])).resolves.toBe(1);
-    });
-    test("test2", () => {
-      expect(asyncSumOfArray([])).rejects.toThrowError();
-    });
-    test("test2", () => {
-      expect(asyncSumOfArray([1, 2])).resolves.toBe(3);
-    });
-    // test("偽陽性:false positive", () => {
-    //   setTimeout(() => {
-    //     expect(true).toBeFalsy();
-    //   }, 1000);
-    // });
-  });
+  // describe("asyncSumOfArray", () => {
+  //   test("test", () => {
+  //     expect.hasAssertions();
+  //     expect(asyncSumOfArray([])).resolves.toBe(1);
+  //   });
+  //   test("test2", () => {
+  //     expect(asyncSumOfArray([])).rejects.toThrowError();
+  //   });
+  //   test("test2", () => {
+  //     expect(asyncSumOfArray([1, 2])).resolves.toBe(3);
+  //   });
+  //   // test("偽陽性:false positive", () => {
+  //   //   setTimeout(() => {
+  //   //     expect(true).toBeFalsy();
+  //   //   }, 1000);
+  //   // });
+  // });
 
   describe("sometimesZero", () => {
     test("test", async () => {
