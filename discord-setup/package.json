@@ -1,0 +1,10 @@
+{
+  "name": "discord-setup",
+  "description": "プラハチャレンジのDiscordチャネルを初期作成するためのスクリプト",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^12.5.3"
+  }
+}
